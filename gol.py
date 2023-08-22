@@ -187,6 +187,6 @@ while preGame or game:
         handleGame()
     # print(gameTime)
     pg.display.update()
-    if game:
-        time.sleep(0.01)
+    # if game:
+    #     time.sleep(0.01)
 pg.quit()
