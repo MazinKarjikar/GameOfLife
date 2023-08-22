@@ -62,7 +62,6 @@ def handlePreGame():
                             CELL_SIZE,
                         ),
                     )
-                    print(y, x, NUM_ROWS, NUM_COLS)
         elif event.type == pg.MOUSEBUTTONUP:
             if event.button == 1:
                 drawing = False
@@ -70,7 +69,6 @@ def handlePreGame():
             x, y = event.pos
             x = x // CELL_SIZE
             y = y // CELL_SIZE
-            # print("here MOVING", x, y)
             if 0 <= y < NUM_ROWS and 0 <= x < NUM_COLS:
                 grid[y][x] = [0, 0, 0]
                 pg.draw.rect(
@@ -107,6 +105,8 @@ def handleGame():
     gameTime += 1
     toRemove = []
     for y, x in decaying:
+        if (y, x) in whiteCells:
+            continue
         if grid[y][x][0] == 7:
             toRemove.append([y, x])
         else:
