@@ -2,6 +2,7 @@ import pygame as pg
 import time
 import random
 
+# Setting up the Screen
 pg.init()
 SCREEN_WIDTH = 1920
 SCREEN_HEIGHT = 1080
@@ -13,7 +14,7 @@ SCREEN_HEIGHT = CELL_SIZE * NUM_ROWS
 
 screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-color = None
+# Setting up the color gradient to show cells gradually dying
 color_gradient = [
     (255, 255, 255),  # White
     (0, 0, 255),  # Blue
@@ -25,14 +26,17 @@ color_gradient = [
     (0, 0, 0),  # Black
 ]
 
+# Grid storing the current color, count of live neighbors, and the last updated time
 grid = [
     [[7, 0, 0] for _ in range(NUM_COLS)] for _ in range(NUM_ROWS)
 ]  # grid[i][j] = [colorIndex, neighbor count, lastUpdated]
 
+# Sets for O(1) search and deletion
 decaying = set()  # [i, j]
 whiteCells = set()  # [i, j]
 
 
+# Draw the starting live cells by clicking and dragging on the screen
 def handlePreGame():
     global drawing
     global preGame
@@ -91,6 +95,7 @@ def handlePreGame():
                         whiteCells.add((i, j))
 
 
+# Update the screen according to the game rules!
 def handleGame():
     global gameTime
     global game
@@ -187,6 +192,9 @@ while preGame or game:
         handleGame()
     # print(gameTime)
     pg.display.update()
+
+    # If youd like to slow the generations down a bit, you can uncomment the time.sleep below
+
     # if game:
     #     time.sleep(0.01)
 pg.quit()

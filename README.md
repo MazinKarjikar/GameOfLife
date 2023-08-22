@@ -10,3 +10,7 @@ This is my rendition of Conway's Game of Life in Python. This implementation use
 pip install -r requirements.txt
 python3 gol.py
 ```
+
+## How to Play
+
+The game starts with an empty black screen. You can then click and drag your mouse to select the starting live cells. Once you've chosen the starting cells, click `Spacebar` to start the game. To quit and restart, exit the window, and run again.
